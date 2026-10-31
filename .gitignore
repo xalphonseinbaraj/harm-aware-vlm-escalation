@@ -1,0 +1,10 @@
+__pycache__/
+*.py[oc]
+.venv/
+.env
+data/Kvasir-SEG/
+data/TestDataset/
+*.pt
+*.vlmcache.jsonl
+tmp_overlays*/
+masks_rev/

@@ -1,0 +1,15 @@
+torch
+torchvision
+numpy
+scipy
+pillow
+scikit-learn
+joblib
+requests
+pyyaml
+matplotlib
+tqdm
+python-dotenv
+segmentation-models-pytorch
+timm
+streamlit

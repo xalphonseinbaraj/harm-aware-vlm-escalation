@@ -1,0 +1,6 @@
+{
+  "model": "unetpp_r34",
+  "best_val_iou": 0.8494827693735211,
+  "best_epoch": 49,
+  "train_minutes": 60.5164351383845
+}

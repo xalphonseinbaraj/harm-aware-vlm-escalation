@@ -1,0 +1,32 @@
+data:
+  root: "E:/polyp_llm_seg/data/Kvasir-SEG"   # adjust to actual download path
+  image_size: 384
+  val_frac: 0.15
+  test_frac: 0.15
+  seed: 42
+
+backbone:
+  base_channels: 32
+  batch_size: 8
+  epochs: 30
+  lr: 1.0e-4
+  confidence_loss_weight: 0.5
+  num_workers: 0   # Windows DataLoader hang lesson from prior projects -- keep at 0
+
+gate:
+  iou_threshold: 0.7      # backbone IoU below this -> "needs refinement" label
+  decision_threshold: 0.5 # gate's own P(needs refinement) cutoff, sweep this
+
+mllm:
+  provider: "nvidia_nim"
+  model: "meta/llama-3.2-11b-vision-instruct"
+  max_retries: 2
+
+verification:
+  faithfulness_threshold: 0.5   # sweep 0.5 / 1.0 / 2.0, same as FaithCAM project
+
+fusion_modes:
+  - never_refine     # backbone-only baseline
+  - always_refine     # skip gate, MLLM on every case
+  - no_verify         # gate + MLLM, skip causal check (accept blindly)
+  - full               # gate + MLLM + causal verify (the actual proposed method)

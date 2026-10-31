@@ -1,0 +1,6 @@
+{
+  "model": "deeplabv3p_r50",
+  "best_val_iou": 0.8373143892517262,
+  "best_epoch": 40,
+  "train_minutes": 45.624611834685005
+}

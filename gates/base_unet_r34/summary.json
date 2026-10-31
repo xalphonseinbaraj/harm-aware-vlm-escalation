@@ -1,0 +1,6 @@
+{
+  "model": "unet_r34",
+  "best_val_iou": 0.8530053213269088,
+  "best_epoch": 45,
+  "train_minutes": 32.93188718954722
+}

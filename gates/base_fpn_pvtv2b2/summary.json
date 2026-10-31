@@ -1,0 +1,6 @@
+{
+  "model": "fpn_pvtv2b2",
+  "best_val_iou": 0.8691348482202066,
+  "best_epoch": 45,
+  "train_minutes": 30.247023479143778
+}

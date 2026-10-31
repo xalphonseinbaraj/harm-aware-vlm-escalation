@@ -1,0 +1,9 @@
+{
+  "config": "E:\\polyp_llm_seg\\configs\\default.yaml",
+  "out": "ckpt_rev\\light_s2",
+  "seed": 2,
+  "aug": "light",
+  "lambda_conf": 0.5,
+  "epochs": 30,
+  "lr": 0.0001
+}

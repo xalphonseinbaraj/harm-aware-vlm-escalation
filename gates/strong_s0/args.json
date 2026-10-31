@@ -1,0 +1,9 @@
+{
+  "config": "E:\\polyp_llm_seg\\configs\\default.yaml",
+  "out": "ckpt_rev\\strong_s0",
+  "seed": 0,
+  "aug": "strong",
+  "lambda_conf": 0.5,
+  "epochs": 50,
+  "lr": 0.0001
+}

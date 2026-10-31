@@ -1,0 +1,6 @@
+{
+  "model": "segformer_mitb2",
+  "best_val_iou": 0.8712861533214649,
+  "best_epoch": 39,
+  "train_minutes": 31.20833388566971
+}
