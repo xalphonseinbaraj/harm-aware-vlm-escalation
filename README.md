@@ -121,6 +121,11 @@ CVC-300 duplicates CVC-ColonDB images, and its results are not used in the paper
 appended. It keeps its original file name, but its timing rests on our own records, so it is not an externally verifiable
 preregistration, as stated in the paper.
 
+## License
+
+The code is released under the MIT License (see `LICENSE`). The datasets, MedSAM and the VLMs keep their own licences and terms
+of use; none of them is redistributed here.
+
 ## Citation
 
 Citation details will be added on publication.
