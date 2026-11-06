@@ -24,3 +24,7 @@ De-duplication: no duplicate found (closest pair 7 of 256 bits; seven closest pa
 Primary (PolypUNet, 3 seeds, pooled): gain +0.0206, 95% CI [+0.0176, +0.0235], Wilcoxon p = 1.3e-49 -> criterion MET.
 Every centre: gain +0.017 to +0.025, each 95% CI excluding zero (p <= 0.012).
 Secondary (SegFormer, 3 seeds, pooled): gain +0.0102, 95% CI [+0.0079, +0.0125], p = 2.6e-18; significant at 5 of 6 centres (C4 not).
+
+NOTE ADDED 2026-11-06 (wording only; the plan above is unchanged): the manuscript describes this file as an internal
+analysis plan. Its timing rests on our own records and is not independently verifiable, so it is not a preregistration
+in the sense of an external registry.

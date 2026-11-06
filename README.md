@@ -83,8 +83,8 @@ The analysis scripts expect the per-image logs in `results_rev/` (Kvasir-SEG tes
 `results/validation/` and `results/external/`. MedSAM runs on the CPU when `MEDSAM_DEVICE=cpu` is set; results are identical.
 MedSAM's training data may overlap with the public polyp datasets used here (see the paper, Section 5.3).
 
-### Pre-registered confirmation on PolypGen (Phase 10)
-`revision/PHASE10_PREREGISTRATION.txt` (plan written before download, with the outcome appended), `revision/phase10_polypgen.bat`,
+### Retrospective external evaluation on PolypGen (Phase 10)
+`revision/PHASE10_PREREGISTRATION.txt` (our internal analysis plan, written before the download, with the outcome appended; the file keeps its original name, but its timing rests on our own records, so it is not an externally verifiable preregistration, as stated in the paper), `revision/phase10_polypgen.bat`,
 `revision/polypgen_confirm.py`. PolypGen (Ali et al., Scientific Data 2023; EndoCV2021, Scientific Reports 2024) must be downloaded
 from its authors (Synapse syn45200214) and is **not redistributed** here; only our per-image result logs and the de-duplication
 reports are included. Place the single frames as `data/PolypGen/C1 ... C6/{images,masks}` (frames without a polyp mask removed).

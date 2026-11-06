@@ -1,4 +1,4 @@
-"""Pre-registered confirmation on PolypGen (revision R1; plan in revision/PHASE10_PREREGISTRATION.txt).
+"""Retrospective external evaluation on PolypGen (revision R1; internal analysis plan in revision/PHASE10_PREREGISTRATION.txt).
 The learned acceptance rule is fitted on the Kvasir-SEG VALIDATION split only (results_val/*__medsam_box.jsonl, seeds pooled),
 exactly as in revision/learned_acceptance.py, and applied unchanged to PolypGen centres C1-C6.
 Primary outcome: strong PolypUNet, three seeds, all centres pooled. Run from the project root:  python revision\\polypgen_confirm.py

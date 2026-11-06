@@ -1,7 +1,7 @@
 @echo off
 REM ===================================================================================
-REM PHASE 10 -- pre-registered confirmation on PolypGen (Ali et al., Sci Data 2023), centres C1-C6, 1,411 images
-REM   Plan fixed in revision\PHASE10_PREREGISTRATION.txt before the data were downloaded. Duplicate check: no PolypGen
+REM PHASE 10 -- retrospective external evaluation on PolypGen (Ali et al., Sci Data 2023), centres C1-C6, 1,411 images
+REM   Internal analysis plan in revision\PHASE10_PREREGISTRATION.txt, written before the download. Duplicate check: no PolypGen
 REM   image is a duplicate of Kvasir-SEG, CVC-ClinicDB, CVC-ColonDB or ETIS (7 closest pairs checked visually).
 REM   Frozen method: MedSAM box prompt, Kvasir-SEG gate, learned acceptance rule fitted on validation only.
 REM   OFFLINE, CPU only (MedSAM). PolypUNet first (primary, ~5 h), then SegFormer (secondary, ~5 h). Resumes if stopped.

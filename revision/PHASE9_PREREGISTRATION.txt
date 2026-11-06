@@ -13,3 +13,7 @@ OUTCOME NOTE (2026-11-05, after the runs): the check could not serve as an indep
 that all 60 CVC-300 images and masks in this release are identical to images 149-208 of CVC-ColonDB, which was already part of
 the external evaluation. The CVC-300 result (+0.020 IoU for PolypUNet) is therefore a re-evaluation of a CVC-ColonDB subset,
 not new data, and it is not reported as confirmation. The manuscript now states why CVC-300 is not used (Section 4.1).
+
+NOTE ADDED 2026-11-06 (wording only; the plan above is unchanged): the manuscript describes this file as an internal
+analysis plan. Its timing rests on our own records and is not independently verifiable, so it is not a preregistration
+in the sense of an external registry.
