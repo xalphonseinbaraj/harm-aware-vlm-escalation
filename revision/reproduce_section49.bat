@@ -3,7 +3,7 @@ REM ============================================================================
 REM Reproduce the reported numbers of Section 4.9 from the saved per-image logs (no GPU, no MedSAM, no internet).
 REM Each step prints the values reported in the manuscript; compare them with REPRODUCE_EXPECTED.txt.
 REM ===================================================================================
-cd /d E:\polyp_llm_seg
+cd /d "%~dp0.."
 echo ===== 1. Implementation checks of Algorithm 2 =====
 python revision\test_algorithm2.py || goto :fail
 echo ===== 2. PolypGen primary analysis, per-centre results, Holm-adjusted p =====
