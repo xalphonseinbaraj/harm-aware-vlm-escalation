@@ -1,0 +1,38 @@
+{
+ "C1": {
+  "kept": 251,
+  "empty_mask": 5,
+  "no_mask": 0,
+  "size_mismatch": 0
+ },
+ "C2": {
+  "kept": 270,
+  "empty_mask": 31,
+  "no_mask": 0,
+  "size_mismatch": 0
+ },
+ "C3": {
+  "kept": 455,
+  "empty_mask": 1,
+  "no_mask": 1,
+  "size_mismatch": 0
+ },
+ "C4": {
+  "kept": 146,
+  "empty_mask": 81,
+  "no_mask": 0,
+  "size_mismatch": 0
+ },
+ "C5": {
+  "kept": 206,
+  "empty_mask": 2,
+  "no_mask": 0,
+  "size_mismatch": 0
+ },
+ "C6": {
+  "kept": 83,
+  "empty_mask": 5,
+  "no_mask": 0,
+  "size_mismatch": 0
+ }
+}

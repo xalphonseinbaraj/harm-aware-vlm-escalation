@@ -1,0 +1,15 @@
+Phase 9 pre-registration (written 2026-11-05, before any CVC-300 run)
+
+Question: does the learned acceptance rule of Section 4.9, fitted on the Kvasir-SEG validation split only, also improve on the
+backbone on CVC-300, a dataset not used anywhere in the study?
+Fixed in advance: MedSAM box prompt (10% margin, threshold 0.5), the gate, theta = 0.5, and the acceptance rule exactly as in
+revision/learned_acceptance.py (logistic regression, C = 1, seven inputs, fitted on results_val/*__medsam_box.jsonl, seeds pooled).
+Primary outcome: mean IoU gain of gate + learned acceptance over the backbone for strong PolypUNet (three seeds), with a 95%
+percentile bootstrap interval over images (seeds paired) and a paired Wilcoxon test on seed-averaged per-image IoU.
+Confirmation criterion: gain > 0 with the 95% interval excluding zero. Secondary: the same for SegFormer (three seeds).
+Whatever the outcome, it is reported in the paper.
+
+OUTCOME NOTE (2026-11-05, after the runs): the check could not serve as an independent confirmation. A pixel comparison showed
+that all 60 CVC-300 images and masks in this release are identical to images 149-208 of CVC-ColonDB, which was already part of
+the external evaluation. The CVC-300 result (+0.020 IoU for PolypUNet) is therefore a re-evaluation of a CVC-ColonDB subset,
+not new data, and it is not reported as confirmation. The manuscript now states why CVC-300 is not used (Section 4.1).

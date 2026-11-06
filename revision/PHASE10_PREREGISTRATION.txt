@@ -1,0 +1,26 @@
+Phase 10 pre-registration (written 2026-11-05, BEFORE the PolypGen data were downloaded or inspected)
+
+Dataset: PolypGen single frames with masks (Ali et al., Scientific Data 10 (2023) 75, doi:10.1038/s41597-023-01981-y;
+CC BY 4.0), centres C1-C6. Downloaded by the author from Synapse (syn45200214) and cited in the manuscript.
+
+Step 1, de-duplication (done before any model is run): every PolypGen image is compared with every image of Kvasir-SEG
+(all 1,000), CVC-ClinicDB, CVC-ColonDB and ETIS-LaribPolypDB with a 16x16 average hash; any pair within Hamming distance
+10 is checked visually, and duplicates or near-duplicates are removed. Images without a polyp (empty mask) are excluded.
+The number removed per centre is reported. If more than half of a centre is removed, that centre is dropped.
+
+Step 2, frozen method: MedSAM box prompt (10% margin, threshold 0.5), the Kvasir-SEG gate with theta = 0.5, and the
+learned acceptance rule exactly as in revision/learned_acceptance.py (logistic regression, C = 1, seven inputs, fitted on
+results_val/*__medsam_box.jsonl, seeds pooled). Nothing is refitted or tuned on PolypGen.
+
+Primary outcome: mean IoU gain of gate + learned acceptance over the backbone for strong PolypUNet (three seeds), pooled over
+all retained centres, with a 95% percentile bootstrap interval over images (seeds paired, 2,000 resamples) and a paired
+Wilcoxon test on seed-averaged per-image IoU. Confirmation criterion: gain > 0 with the 95% interval excluding zero.
+Secondary outcomes: the same per centre (descriptive), and for SegFormer (three seeds), where v13 predicts no gain.
+Whatever the outcome, it is reported in the manuscript and the response letter.
+
+OUTCOME (2026-11-06, after the runs; analysis by revision/polypgen_confirm.py, unchanged):
+De-duplication: no duplicate found (closest pair 7 of 256 bits; seven closest pairs inspected, all different images).
+126 frames without a polyp mask removed; 1,411 images retained (C1 251, C2 270, C3 455, C4 146, C5 206, C6 83).
+Primary (PolypUNet, 3 seeds, pooled): gain +0.0206, 95% CI [+0.0176, +0.0235], Wilcoxon p = 1.3e-49 -> criterion MET.
+Every centre: gain +0.017 to +0.025, each 95% CI excluding zero (p <= 0.012).
+Secondary (SegFormer, 3 seeds, pooled): gain +0.0102, 95% CI [+0.0079, +0.0125], p = 2.6e-18; significant at 5 of 6 centres (C4 not).

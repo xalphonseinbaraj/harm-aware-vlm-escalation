@@ -54,12 +54,18 @@ def main():
     args = ap.parse_args()
 
     from run_pipeline import apply_boundary_adjustment, draw_overlay  # size-adaptive edit (paper Sec. 3.4)
-    if args.vlm:
+    MEDSAM = bool(args.vlm) and args.vlm.startswith("medsam")
+    if MEDSAM:  # Experiment C: MedSAM re-segments the escalated image from a box prompt (no VLM, no Ollama)
+        from medsam_refiner import MedSAMRefiner
+        refiner = None  # created after the device is known
+    elif args.vlm:
         from vlm_client import ask_vlm
 
     cfg = yaml.safe_load(open(args.config))
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     bb = load_backbone(args.backbone, dev, cfg["backbone"]["base_channels"])
+    if MEDSAM:
+        refiner = MedSAMRefiner(dev)
     gate = ConfidenceGate().load(args.gate) if args.gate else None
     root = cfg["data"]["root"]
     if args.data_root:
@@ -88,7 +94,7 @@ def main():
     cache_path = out.with_suffix(".vlmcache.jsonl"); cache = {}
     if args.vlm and cache_path.exists():
         cache = {r["image_id"]: r["v"] for r in map(json.loads, open(cache_path))}
-    if args.vlm and args.workers > 1:
+    if args.vlm and args.workers > 1 and not MEDSAM:
         from concurrent.futures import ThreadPoolExecutor, as_completed
         todo = []
         for i in range(len(ds)):
@@ -141,11 +147,18 @@ def main():
                 op = str(ovl / f"{iid}.jpg"); draw_overlay(s["image"], bmask, op)
                 rec["t_overlay_ms"] = 1000 * (time.perf_counter() - t)
                 try:
-                    v = cache[iid] if iid in cache else ask_vlm(args.vlm, op)
+                    if MEDSAM:
+                        sync(dev); t0 = time.perf_counter()
+                        pmask, lab = refiner(s["image"], bmask)
+                        sync(dev); v = {"adjustment": lab, "reasoning": "", "latency_s": time.perf_counter() - t0,
+                                        "vlm_confidence": float("nan"), "prompt_tokens": None, "completion_tokens": None}
+                    else:
+                        v = cache[iid] if iid in cache else ask_vlm(args.vlm, op)
                     rec.update({"adj": v["adjustment"], "reasoning": v["reasoning"], "t_vlm_s": v["latency_s"],
                                 "vlm_conf": v["vlm_confidence"], "prompt_tokens": v["prompt_tokens"],
                                 "completion_tokens": v["completion_tokens"]})
-                    pmask = apply_boundary_adjustment(bmask, v["adjustment"])
+                    if not MEDSAM:
+                        pmask = apply_boundary_adjustment(bmask, v["adjustment"])
                     rec["prop"] = seg_metrics(pmask, gt)
                     rec["pixels_changed"] = int(np.logical_xor(pmask > 0.5, bmask > 0.5).sum())
                     t = time.perf_counter()

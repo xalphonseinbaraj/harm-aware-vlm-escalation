@@ -1,0 +1,16 @@
+Values reported in the manuscript (v23), to compare with the output of revision\reproduce_section49.bat
+(bootstrap intervals can differ in the last digit if numpy's random generator differs between versions)
+
+1. ALL CHECKS PASSED
+2. PRIMARY strong pooled n=1411 never 0.542 gate+learned 0.563 gain +0.0206 [+0.0176, +0.0235]; criterion MET
+   centre gains C1 +0.0207, C2 +0.0169, C3 +0.0197, C4 +0.0251, C5 +0.0222, C6 +0.0251
+   segformer pooled gain +0.0102 [+0.0079, +0.0125]
+   Holm-adjusted p: C3 1.88e-18, C5 6.82e-10, C4 3.1e-08, C1 3.83e-08, C2 9.56e-08, C6 0.0117
+3. strong medsam_box: Kvasir test +0.0025, CVC-ClinicDB +0.0168, CVC-ColonDB +0.0147, ETIS +0.0121
+   segformer medsam_box: Kvasir test +0.0004, CVC-ClinicDB -0.0060, CVC-ColonDB +0.0038, ETIS -0.0004
+4. gated-only rows: strong 159, segformer 87; PolypGen gated-only rule: strong +0.0188, segformer +0.0094
+5. PolypGen (strong): full +0.0206, change size only +0.0127, faithfulness only +0.0111, confidence only +0.0000
+6. PolypGen (strong): full minus change-size +0.0079 [+0.0053, +0.0106]; improved 28.5%, unchanged 65.0%, worsened 6.5%;
+   two-stage centre bootstrap [+0.0174, +0.0250]; C4 sequences 29, [+0.0117, +0.0438]
+7. strong: AUROC in-sample 0.710, grouped CV 0.663 (0.626-0.684); gain in-sample +0.0059, grouped CV +0.0036
+8. strong PolypGen: agree 90.7%, kappa 0.81, accept 43% vs 37%, Brier 0.227 vs 0.221

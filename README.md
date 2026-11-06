@@ -1,8 +1,8 @@
-# When to Ask for Help: Harm-Aware, Confidence-Gated Escalation to Vision-Language Models
+# When to Ask for Help: Harm-Aware, Confidence-Gated Escalation to Vision-Language and Segmentation Foundation Models
 
 Code, trained gates and per-image result logs for the paper
 
-> A. I. Xavier, *When to Ask for Help: Confidence-Gated Escalation to Vision-Language Models for Efficient Polyp Segmentation*, Biomedical Signal Processing and Control (under revision, manuscript BSPC-D-26-16498).
+> A. I. Xavier, *When to Ask for Help: Confidence-Gated Escalation to Vision-Language and Segmentation Foundation Models for Polyp Segmentation*, Biomedical Signal Processing and Control (under revision, manuscript BSPC-D-26-16498).
 
 ## Idea
 
@@ -67,3 +67,24 @@ Run from the repository root (Windows batch files; each step resumes if interrup
 ## Citation
 
 Citation details will be added on publication.
+
+## Revision R1 additions (validation-split answers, SegFormer seeds 1-2, MedSAM)
+
+| Script | Purpose | Paper |
+|---|---|---|
+| `revision/phase7_validation_segformer_seeds.bat` | VLM answers on the validation split; SegFormer seeds 1 and 2 | Sections 4.5, 4.8, 5.2 |
+| `revision/phase8_medsam.bat`, `revision/medsam_refiner.py` | MedSAM (box prompt from the backbone mask) as a fourth escalation target | Section 4.9, Table 11 |
+| `revision/learned_acceptance.py` | Acceptance rule fitted on validation only, applied once to test and external sets | Section 4.9, Table 11 |
+| `revision/predeployment_check.py` | Pre-deployment check on validation and test, harm avoided, CIs, AUROC | Tables 7, 10, 12 |
+| `revision/operator_ceiling.py` | Best of the four edit operations per image (needs masks saved with `--save-masks`) | Section 4.5 |
+
+The analysis scripts expect the per-image logs in `results_rev/` (Kvasir-SEG test), `results_val/` (validation) and `results_ext/`
+(external sets), as produced by the run scripts. In this repository the same logs are stored in `results/kvasir/`,
+`results/validation/` and `results/external/`. MedSAM runs on the CPU when `MEDSAM_DEVICE=cpu` is set; results are identical.
+MedSAM's training data may overlap with the public polyp datasets used here (see the paper, Section 5.3).
+
+### Pre-registered confirmation on PolypGen (Phase 10)
+`revision/PHASE10_PREREGISTRATION.txt` (plan written before download, with the outcome appended), `revision/phase10_polypgen.bat`,
+`revision/polypgen_confirm.py`. PolypGen (Ali et al., Scientific Data 2023; EndoCV2021, Scientific Reports 2024) must be downloaded
+from its authors (Synapse syn45200214) and is **not redistributed** here; only our per-image result logs and the de-duplication
+reports are included. Place the single frames as `data/PolypGen/C1 ... C6/{images,masks}` (frames without a polyp mask removed).

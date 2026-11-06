@@ -1,0 +1,102 @@
+{
+ "results_rev/strong_s0__medgemma4b_p1.jsonl": {
+  "n": 150,
+  "edited_escalated": 44,
+  "decision_changes": 0,
+  "gateV_mean": 0.7329453623765507,
+  "gateV_sd": 0.0,
+  "gateV_min": 0.7329453623765507,
+  "gateV_max": 0.7329453623765507,
+  "never": 0.7400632104906099
+ },
+ "results_rev/strong_s1__medgemma4b_p1.jsonl": {
+  "n": 150,
+  "edited_escalated": 46,
+  "decision_changes": 2,
+  "gateV_mean": 0.7430282199463141,
+  "gateV_sd": 0.00034275999914830537,
+  "gateV_min": 0.7426232132693877,
+  "gateV_max": 0.7433498038190914,
+  "never": 0.7490270603532626
+ },
+ "results_rev/strong_s2__medgemma4b_p1.jsonl": {
+  "n": 150,
+  "edited_escalated": 44,
+  "decision_changes": 0,
+  "gateV_mean": 0.7450282826796543,
+  "gateV_sd": 0.0,
+  "gateV_min": 0.7450282826796543,
+  "gateV_max": 0.7450282826796543,
+  "never": 0.7463290592581326
+ },
+ "results_rev/strong_s0__llama11b_p1_nim.jsonl": {
+  "n": 150,
+  "edited_escalated": 42,
+  "decision_changes": 0,
+  "gateV_mean": 0.7310100999608452,
+  "gateV_sd": 0.0,
+  "gateV_min": 0.7310100999608452,
+  "gateV_max": 0.7310100999608452,
+  "never": 0.7400632104906099
+ },
+ "results_rev/strong_s1__llama11b_p1_nim.jsonl": {
+  "n": 150,
+  "edited_escalated": 44,
+  "decision_changes": 2,
+  "gateV_mean": 0.743079782454532,
+  "gateV_sd": 0.0003427599991483341,
+  "gateV_min": 0.7426747757776058,
+  "gateV_max": 0.7434013663273095,
+  "never": 0.7490270603532626
+ },
+ "results_rev/strong_s2__llama11b_p1_nim.jsonl": {
+  "n": 150,
+  "edited_escalated": 41,
+  "decision_changes": 0,
+  "gateV_mean": 0.7456353814273908,
+  "gateV_sd": 0.0,
+  "gateV_min": 0.7456353814273908,
+  "gateV_max": 0.7456353814273908,
+  "never": 0.7463290592581326
+ },
+ "results_rev/segformer_s0__medgemma4b_p1.jsonl": {
+  "n": 150,
+  "edited_escalated": 27,
+  "decision_changes": 8,
+  "gateV_mean": 0.8501517921717001,
+  "gateV_sd": 0.00016519687749215337,
+  "gateV_min": 0.8499568580614408,
+  "gateV_max": 0.8503516287411619,
+  "never": 0.8536682689711802
+ },
+ "results_ext/CVC-ClinicDB_segformer_s0__medgemma4b_p1.jsonl": {
+  "n": 62,
+  "edited_escalated": 28,
+  "decision_changes": 2,
+  "gateV_mean": 0.7667397418777618,
+  "gateV_sd": 0.0007050744046046643,
+  "gateV_min": 0.7657207115911047,
+  "gateV_max": 0.7672437795637802,
+  "never": 0.7686796957979649
+ },
+ "results_ext/CVC-ColonDB_segformer_s0__medgemma4b_p1.jsonl": {
+  "n": 380,
+  "edited_escalated": 217,
+  "decision_changes": 41,
+  "gateV_mean": 0.6948489580316155,
+  "gateV_sd": 0.00027015419537914216,
+  "gateV_min": 0.6943765388311517,
+  "gateV_max": 0.6953642904176532,
+  "never": 0.6983625113592001
+ },
+ "results_ext/ETIS-LaribPolypDB_segformer_s0__medgemma4b_p1.jsonl": {
+  "n": 196,
+  "edited_escalated": 149,
+  "decision_changes": 16,
+  "gateV_mean": 0.6532380405724932,
+  "gateV_sd": 0.000330102653451309,
+  "gateV_min": 0.6526070645279131,
+  "gateV_max": 0.653650966550577,
+  "never": 0.6703269366953317
+ }
+}
