@@ -31,7 +31,7 @@ image -> (1) backbone: mask m + confidence c
 * **MedSAM with learned acceptance (bounded positive result).** Gated escalation to MedSAM with a learned acceptance rule
   improved PolypUNet by +0.012 to +0.017 IoU on CVC-ClinicDB, CVC-ColonDB and ETIS (exploratory, because these results informed
   the rule's design) and by +0.021 IoU (95% CI 0.018-0.024) in a retrospective external evaluation of the frozen pipeline on
-  1,411 PolypGen images from six centres. This is image-level evidence for the evaluated pipeline, not evidence of independent
+  1,411 PolypGen images from six centers. This is image-level evidence for the evaluated pipeline, not evidence of independent
   clinical generalization: MedSAM's pretraining may include some public polyp images, and PolypGen has no patient identifiers.
   A one-parameter change-size rule reached +0.013 IoU, and a stronger backbone alone (SegFormer, 0.752 IoU) is the better route
   to accuracy where it can be deployed.
@@ -110,7 +110,7 @@ CVC-300 duplicates CVC-ColonDB images, and its results are not used in the paper
 | `operator_ceiling.py` | Best of the four edit operations per image (needs masks saved with `--save-masks`) | Section 4.5 |
 | `control_sensitivity.py` | Ten random control draws for causal verification | Section 3.5 |
 | `learned_acceptance.py` | Acceptance rule fitted on validation only, applied unchanged | Section 4.9, Table 11 |
-| `polypgen_confirm.py` | PolypGen primary analysis, per-centre results | Section 4.9, Tables 11-12 |
+| `polypgen_confirm.py` | PolypGen primary analysis, per-center results | Section 4.9, Tables 11-12 |
 | `acceptance_baselines.py` | Simpler acceptance rules (change size, faithfulness, confidence) | Supplementary Table S6 |
 | `acceptance_population.py`, `acceptance_agreement.py` | Fitting on all vs. gated validation images; decision agreement and calibration | Algorithm 2 notes |
 | `acceptance_grouped_cv.py` | Image-grouped cross-validation of the acceptance rule | Algorithm 2 notes |
